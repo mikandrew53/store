@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <div class="form__inputs">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" required [(ngModel)]="item.title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" required type="number" step="0.01" [(ngModel)]="item.price">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="content" [(ngModel)]="item.content"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="form__img" *ngIf="!editing">
+    <input #imgInput hidden="true" type="file" onclick="this.value=null" formControlName="image" (change)="onFileSelected($event)"/>
+    <button mat-flat-button color="primary" (click)="imgInput.click()" style="width: 100%;">Image</button>
+    <p>{{fileName}}</p>
+  </div>
+
+  <div class="form__btn">
+    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="warn" (click)="onSubmit(true)" *ngIf="editing">Delete</button>
+  </div>
+</form>

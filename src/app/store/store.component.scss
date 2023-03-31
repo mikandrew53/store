@@ -1,0 +1,131 @@
+$grey: #303030;
+// $dark-grey: darken($color: $grey, $amount: 2);
+$dark-grey: darken($color: #bbbaba, $amount: 2);
+
+$warn: #f44336;
+$primary: #e91e63;
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+.cards{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 400px 400px 400px;
+  column-gap: 30px;
+  row-gap: 40px;
+}
+
+.loaded {
+  width: 100%;
+}
+
+
+.card {
+  box-shadow: 5px 10px 10px rgba(0,0,0,.08) !important;
+  padding: 15px 0 !important;
+  background-color: $dark-grey;
+  position: relative;
+  height: 600px;
+  .mat-card-header-text{
+      padding: 0 10px;
+      margin-left: 0;
+      margin-bottom: 20px;
+  }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  .img-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 400px;
+      // padding: 1rem;
+      margin-bottom: 10px;
+      .img-loading{
+          position: absolute;
+          height: 100%;
+          pointer-events: none;
+      }
+      .img {
+          width: 100%;
+          height: 100%;
+      }
+      .img-overlay{
+          position: absolute;
+          pointer-events: none;
+      }
+      .heart-in-img{
+          transform: scale(0);
+          opacity: 0;
+          // color: $warn;
+      }
+      .show-heart-in-img {
+          animation: liked 1000ms ease-in-out;
+      }
+  }
+  .like-decoy{
+      opacity: 0;
+      pointer-events: none;
+  }
+  .like{
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      .heart-outline{
+          font-size: 25px;
+          position: relative;
+          top: 0;
+          left: 0;
+          transition: transform 100ms ease-in-out;
+          &:hover {
+              // transform: scale(1.2);
+              transform: scale(1.1);
+              // font-size: 27px;
+              cursor: pointer;
+          }
+      }
+      .fill-heart{
+          // font-size: 0;
+          // font-size: 29px;
+          position: relative;
+          top: 8px;
+          left: -33px;
+          // opacity: 0;
+          transform: scale(0);
+          pointer-events: none;
+          transition: all ease-in-out 100ms;
+          color: $warn;
+          color: $primary;
+      }
+      .show {
+          // transform: scale(1);
+          opacity: 1;
+          transform:scale(1.25);
+          // font-size: 29px;
+      }
+  }
+  .content {
+      padding: 0 10px;
+      max-height: 140px;
+      overflow-y: auto;
+      font-family: 'Roboto', sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
+  }
+  .content::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .content {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+}

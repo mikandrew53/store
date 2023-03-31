@@ -1,0 +1,31 @@
+
+  <mat-toolbar color="primary">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <!-- <span>My App</span> -->
+    <span class="example-spacer"></span>
+    <button mat-button (click)="openDialog()">Add Item</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar>
+
+<div class="cards">
+  <mat-card class="card" *ngFor="let item of items">
+      <div class="loaded">
+          <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+          </mat-card-header>
+
+          <div class="img-wrapper">
+              <img class='img' mat-card-image src="http://localhost:8080/{{item.imageUrl}}" alt="Photo of {{item.title}}">
+          </div>
+
+          <mat-card-content class="content">
+              <p>${{item.price}}</p>
+              <p>{{item.content}}</p>
+              <button mat-raised-button color="primary" (click)="openDialog(item)">Edit</button>
+          </mat-card-content>
+
+      </div>
+  </mat-card>
+</div>
